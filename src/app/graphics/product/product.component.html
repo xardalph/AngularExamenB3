@@ -1,0 +1,7 @@
+<p>Mon composant liste</p>
+<app-product-list (selectionChanged)="onSelectionChanged($event)" [canChangeSelection]="!isEditing"></app-product-list>
+
+<button (click)="onUpdate()">Modifier</button>
+<button (click)="onAdd()">Ajouter</button>
+<app-product-detail [selectedPlayer]="selectedPlayer" *ngIf="!isEditing"></app-product-detail>
+<app-tennis-player-form [player]="selectedPlayer" (done)="formDone()" *ngIf="isEditing"></app-tennis-player-form>

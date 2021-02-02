@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {ProductsService} from '../../services/products.service';
 import {Product} from '../../model/product';
+
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import * as EventEmitter from 'events';
 
 @Component({
   selector: 'app-product-form',
@@ -44,8 +47,8 @@ export class ProductFormComponent implements OnInit {
   }
   submit(): void {
     this.product = this.productForm.value;
-    this.productService.Updateproduct(this.product);
-    this.productService.selectproduct(this.product);
+    this.productService.UpdateProduct(this.product);
+    this.productService.selectProduct(this.product);
     this.done.emit();
   }
 

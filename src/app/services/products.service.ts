@@ -52,15 +52,17 @@ export class ProductsService {
 
   }
 
-  getAllproduct(): Product[]{
+  getAllProduct(): Product[]{
 
     return this.ProductList;
   }
-  selectproduct(pl: Product): void{
+
+
+  selectProduct(pl: Product): void{
     this.selectedProduct = pl;
   }
 
-  Updateproduct(product: Product): void {
+  UpdateProduct(product: Product): void {
     if (product.id == 0){
       product.id = Math.max(0, ...this.ProductList.map(pl => pl.id)) + 1;
       this.ProductList.push(product);

@@ -3,5 +3,5 @@
 
 <button (click)="onUpdate()">Modifier</button>
 <button (click)="onAdd()">Ajouter</button>
-<app-product-detail [selectedPlayer]="selectedPlayer" *ngIf="!isEditing"></app-product-detail>
-<app-tennis-player-form [player]="selectedPlayer" (done)="formDone()" *ngIf="isEditing"></app-tennis-player-form>
+<app-product-detail [selectedProduct]="selectedPlayer" *ngIf="!isEditing"></app-product-detail>
+<app-product-form [inputProduct]="selectedPlayer" (done)="formDone()" *ngIf="isEditing"></app-product-form>

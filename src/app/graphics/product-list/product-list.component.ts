@@ -1,8 +1,8 @@
 
 import {Product} from '../../model/product';
 import {ProductsService} from '../../services/products.service';
-import {Component, Input, OnInit, Output} from '@angular/core';
-import * as EventEmitter from 'events';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
 
 @Component({
   selector: 'app-product-list',
@@ -14,9 +14,9 @@ export class ProductListComponent implements OnInit {
   /**
    * Envoi un événement à chauqe  modification de la sélection
    */
-//  @Output() selectionChanged = new EventEmitter<Product>();
+  @Output() selectionChanged = new EventEmitter<Product>();
 
-  @Input() canChangeSelection = true;
+  @Input() canChangeSelection = false;
 
   /**
    * liste des produits
@@ -51,7 +51,7 @@ export class ProductListComponent implements OnInit {
    */
   public selectPlayer(pl: Product): void {
     this.productService.selectProduct(pl);
-  //  this.selectionChanged.emit(pl);
+    this.selectionChanged.emit(pl);
   }
 
   /**

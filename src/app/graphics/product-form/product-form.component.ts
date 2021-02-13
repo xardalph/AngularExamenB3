@@ -3,7 +3,8 @@ import {ProductsService} from '../../services/products.service';
 import {Product} from '../../model/product';
 
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import * as EventEmitter from 'events';
+import {EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'app-product-form',
@@ -11,24 +12,19 @@ import * as EventEmitter from 'events';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
-
-  @Output() done = new EventEmitter();
-
-
-  private product: Product;
   @Input() set inputProduct(value: Product){
     this.product = value;
     this.productForm.setValue(this.product);
-  }
-
-  getProduct(){
-    return this.product;
   }
 
 
   constructor(private fb: FormBuilder, private productService: ProductsService) {
 
   }
+
+  @Output() done = new EventEmitter();
+
+  private product: Product;
 
   productForm = this.fb.group({
     id: [''],
@@ -38,6 +34,10 @@ export class ProductFormComponent implements OnInit {
     color: ['', [Validators.required]]
 
   });
+
+  getProduct(): Product{
+    return this.product;
+  }
 
   ngOnInit(): void {
 

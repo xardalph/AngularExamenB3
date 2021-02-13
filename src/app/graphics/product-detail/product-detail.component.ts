@@ -9,7 +9,7 @@ import {Product} from '../../model/product';
 })
 export class ProductDetailComponent implements OnInit {
 
-  @Input() public selectedProduct: Product;
+  @Input() public selectionChanged: Product;
 
   constructor() { }
 

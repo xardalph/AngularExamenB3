@@ -11,19 +11,20 @@ export class ProductComponent {
 
 
   constructor(private productsService: ProductsService){}
-  public selectedPlayer: Product;
+  public selectedProduct: Product;
 
   public isEditing = false;
+  selectionChanged: Product;
 
   onSelectionChanged(data: Product): void{
-    this.selectedPlayer = data;
+    this.selectedProduct = data;
   }
 
   onUpdate(): void{
     this.isEditing = true;
   }
   onAdd(): void{
-    this.selectedPlayer = new Product();
+    this.selectedProduct = new Product();
     this.isEditing = true;
   }
   formDone(): void{

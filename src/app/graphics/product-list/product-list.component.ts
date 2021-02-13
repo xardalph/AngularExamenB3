@@ -57,12 +57,7 @@ export class ProductListComponent implements OnInit {
   /**
    * Sélection par l'interface, possible uniquement si on peut changer la sélection
    */
-  onSelectionChange(pl: Product): void{
-    if (this.canChangeSelection)
-    {
-      this.productService.selectProduct(pl);
-    }
-  }
+
   /**
    * Indique si le joueur donné est sélectionné ou non
    */

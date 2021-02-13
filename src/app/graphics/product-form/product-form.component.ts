@@ -12,6 +12,7 @@ import {EventEmitter} from '@angular/core';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+
   @Input() set inputProduct(value: Product){
     this.product = value;
     this.productForm.setValue(this.product);

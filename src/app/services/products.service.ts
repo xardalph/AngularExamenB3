@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 export class ProductsService {
   private ProductList: Product[] = [
     {
-      id: 1,
+      id: 0,
       name: 'Jim',
       texture: 'JIIIM',
       grammage: 85,
@@ -16,26 +16,26 @@ export class ProductsService {
     }
     ,
     {
-      id: 2,
+      id: 1,
       name: 'Pete',
       texture: 'PEEETE',
       grammage: 92,
       color: 'vert'
     }, {
-      id: 3,
+      id: 2,
       name: 'Pat',
       texture: 'PAAAT',
       grammage: 23,
       color: 'bleu'
     }, {
-      id: 4,
+      id: 3,
       name: 'Stephan',
       texture: 'STEPHAAAN',
       grammage: 56,
       color: 'gris'
     },
     {
-      id: 5,
+      id: 4,
       name: 'Rapha',
       texture: 'fin',
       grammage: 94,

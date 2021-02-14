@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
+import {ActivatedRoute} from '@angular/router';
+import {ProductsService} from '../../services/products.service';
 
 
 @Component({
@@ -9,12 +11,18 @@ import {Product} from '../../model/product';
 })
 export class ProductDetailComponent implements OnInit {
 
-  @Input() public selectionChanged: Product;
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(private route: ActivatedRoute, private ProductsService: ProductsService) {
+  }
 
-  constructor() { }
-
+  id: number;
+  product: Product;
 
   ngOnInit(): void {
+
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.product = this.ProductsService.get(this.id);
+
   }
 
 }

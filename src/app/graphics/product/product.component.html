@@ -1,5 +1,5 @@
 <p>Mon composant liste</p>
-<app-product-list (selectionChanged)="onSelectionChanged($event)" [canChangeSelection]="!isEditing"></app-product-list>
+<app-product-list [routeururl]="routeururl" (selectionChanged)="onSelectionChanged($event)" [canChangeSelection]="!isEditing"></app-product-list>
 
 <button (click)="onUpdate()">Modifier</button>
 <button (click)="onAdd()">Ajouter</button>

@@ -18,10 +18,13 @@ export class ProductListComponent implements OnInit {
 
   @Input() canChangeSelection = false;
 
+  @Input() routeururl = 'productDisplay';
+
   /**
    * liste des produits
    */
   productList: Product[];
+
 
 
   constructor(private productService: ProductsService) {

@@ -1,5 +1,5 @@
 import {ProductsService} from '../../services/products.service';
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Product} from '../../model/product';
 
 @Component({
@@ -13,8 +13,10 @@ export class ProductComponent {
   constructor(private productsService: ProductsService){}
   public selectedProduct: Product;
 
+  @Input() routeururl = 'product';
+
   public isEditing = false;
-  selectionChanged: Product;
+  canChangeSelection: Product;
 
   onSelectionChanged(data: Product): void{
     this.selectedProduct = data;

@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductDetailUrlComponent } from './graphics/product-detail-url/product-detail-url.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductComponent,
     ProductDetailComponent,
     ProductListComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductDetailUrlComponent
   ],
   imports: [
     BrowserModule,

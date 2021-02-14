@@ -1,5 +1,5 @@
 import {ProductsService} from '../../services/products.service';
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Product} from '../../model/product';
 
 @Component({
@@ -15,7 +15,7 @@ export class ProductComponent {
 
   public selectedProduct: Product;
 
-  routeururl = 'product';
+  routeururl = 'products';
 
   public isEditing = false;
   canChangeSelection: Product;

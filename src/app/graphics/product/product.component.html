@@ -1,7 +1,7 @@
 <p>Mon composant liste</p>
-<app-product-list [routeururl]="routeururl" (selectionChanged)="onSelectionChanged($event)" [canChangeSelection]="!isEditing"></app-product-list>
+<app-product-list [routeururl]="routeururl" [canChangeSelection]="!isEditing" (selectionChanged)="onSelectionChanged($event)" ></app-product-list>
 
 <button (click)="onUpdate()">Modifier</button>
 <button (click)="onAdd()">Ajouter</button>
-<app-product-detail [selectionChanged]="selectedProduct" *ngIf="!isEditing"></app-product-detail>
+<app-product-detail [product]="selectedProduct" *ngIf="!isEditing"></app-product-detail>
 <app-product-form [inputProduct]="selectedProduct" (done)="formDone()" *ngIf="isEditing"></app-product-form>

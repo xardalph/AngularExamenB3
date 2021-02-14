@@ -1,4 +1,3 @@
-
 import {Product} from '../../model/product';
 import {ProductsService} from '../../services/products.service';
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
@@ -16,7 +15,7 @@ export class ProductListComponent implements OnInit {
    */
   @Output() selectionChanged = new EventEmitter<Product>();
 
-  @Input() canChangeSelection = false;
+  @Input() canChangeSelection = true;
 
   @Input() routeururl = 'productDisplay';
 
@@ -24,7 +23,6 @@ export class ProductListComponent implements OnInit {
    * liste des produits
    */
   productList: Product[];
-
 
 
   constructor(private productService: ProductsService) {
@@ -35,7 +33,7 @@ export class ProductListComponent implements OnInit {
     // récupération de la liste des produit
     this.productList = this.productService.getAllProduct();
     // si il y a plusieurs produits, alors on prend le premier et on le sélectionne
-    if (this.productList && this.productList.some(v => true)){
+    if (this.productList && this.productList.some(v => true)) {
       this.selectPlayer(this.productList[0]);
     }
 
@@ -44,7 +42,7 @@ export class ProductListComponent implements OnInit {
   /**
    * permet d'obtenir le joueur sélectionné
    */
-  getSelectedProduct(): Product{
+  getSelectedProduct(): Product {
     return this.productService.selectedProduct;
   }
 
@@ -53,8 +51,10 @@ export class ProductListComponent implements OnInit {
    * @param pl : product à sélectionner
    */
   public selectPlayer(pl: Product): void {
-    this.productService.selectProduct(pl);
-    this.selectionChanged.emit(pl);
+    if (this.canChangeSelection) {
+      this.productService.selectProduct(pl);
+      this.selectionChanged.emit(pl);
+    }
   }
 
   /**
@@ -64,8 +64,9 @@ export class ProductListComponent implements OnInit {
   /**
    * Indique si le joueur donné est sélectionné ou non
    */
-  isSelected(pl: Product): boolean{
-    return  pl == this.productService.selectedProduct;
+  isSelected(pl: Product): boolean {
+    return pl == this.productService.selectedProduct;
   }
+
 
 }

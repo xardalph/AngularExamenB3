@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
 import {ActivatedRoute} from '@angular/router';
 import {ProductsService} from '../../services/products.service';
@@ -15,13 +15,12 @@ export class ProductDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private ProductsService: ProductsService) {
   }
 
-  id: number;
-  product: Product;
+  @Input() public product: Product;
 
   ngOnInit(): void {
 
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.product = this.ProductsService.get(this.id);
+    // this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    // this.product = this.ProductsService.get(this.id);
 
   }
 

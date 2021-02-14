@@ -10,27 +10,33 @@ import {Product} from '../../model/product';
 export class ProductComponent {
 
 
-  constructor(private productsService: ProductsService){}
+  constructor(private productsService: ProductsService) {
+  }
+
   public selectedProduct: Product;
 
-  @Input() routeururl = 'product';
+  routeururl = 'product';
 
   public isEditing = false;
   canChangeSelection: Product;
 
-  onSelectionChanged(data: Product): void{
-    this.selectedProduct = data;
-  }
 
-  onUpdate(): void{
+  onUpdate(): void {
     this.isEditing = true;
   }
-  onAdd(): void{
+
+  onAdd(): void {
     this.selectedProduct = new Product();
     this.isEditing = true;
   }
-  formDone(): void{
+
+  formDone(): void {
     this.isEditing = false;
-    this.onSelectionChanged(this.productsService.selectedProduct);
+    this.selectedProduct = this.productsService.selectedProduct;
+  }
+
+  onSelectionChanged($event: Product): void {
+    this.selectedProduct = $event;
+
   }
 }

@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
 
   @Input() canChangeSelection = true;
 
-  @Input() routeururl = 'productDisplay';
+  @Input() routeururl = 'productDetail';
 
   /**
    * liste des produits

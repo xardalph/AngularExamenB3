@@ -1,7 +1,17 @@
-<p>Mon composant liste</p>
+Liste des produits :
 <app-product-list [routeururl]="routeururl" [canChangeSelection]="!isEditing" (selectionChanged)="onSelectionChanged($event)" ></app-product-list>
 
-<button (click)="onUpdate()">Modifier</button>
-<button (click)="onAdd()">Ajouter</button>
+<div class="w-50 p-3" style="margin-left:25%; margin-right:25%;">
+<button class=" btn btn-primary" *ngIf="!isEditing" (click)="onUpdate()">Modifier</button>
+<button class=" btn btn-primary ml-auto"  *ngIf="!isEditing" (click)="onAdd()">Ajouter</button>
+
+
+
+
+
+
 <app-product-detail [product]="selectedProduct" *ngIf="!isEditing"></app-product-detail>
+
 <app-product-form [inputProduct]="selectedProduct" (done)="formDone()" *ngIf="isEditing"></app-product-form>
+</div>
+

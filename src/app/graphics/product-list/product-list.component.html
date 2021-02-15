@@ -1,7 +1,13 @@
-<ul>
-  <li *ngFor="let pl of productList" (click)="selectPlayer(pl)" [class.selected]="isSelected(pl)">
 
-    <a routerLink="/{{routeururl}}/{{pl.id}}"> {{pl.name}}</a>
 
-  </li>
-</ul>
+<div class=" list-group mt-3 ">
+
+  <a class="list-group-item list-group-item-action list-group-item-dark  p-3 w-50 d-flex justify-content-center mx-auto text-light bg-dark toto"
+    *ngFor="let pl of productList"
+     (click)="selectPlayer(pl)"
+     [class.active]="isSelected(pl)"
+      routerLink="/{{routeururl}}/{{pl.id}}"> {{pl.name}}</a>
+
+<br/>
+</div>
+

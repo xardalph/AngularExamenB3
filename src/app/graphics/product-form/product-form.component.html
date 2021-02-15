@@ -1,24 +1,46 @@
 <form [formGroup]="productForm" (ngSubmit)="submit()">
-  <label>
-    name:
-    <input type="text" placeholder="Player name" formControlName="name" />
-    <span *ngIf="shouldShowRequiredError(productForm.controls.name)">Ce champ est requis</span>
-  </label>
-  <label>
-    texture:
-    <input type="text" placeholder="texture" formControlName="texture" />
-  </label>
+  <div class="col-sm-2 ">
+    <div class="col">
+      <label class="form-label">
+        name:
+      </label>
+      <input class="form-control" type="text" placeholder="Product name" formControlName="name"/>
+      <span *ngIf="shouldShowRequiredError(productForm.controls.name)">Ce champ est requis</span>
 
-  <label>
-    grammage:
-    <input type="text" placeholder="grammage" formControlName="grammage" />
-  </label>
+    </div>
+    <div class="col">
+      <label class="form-label">
+        texture:
+      </label>
 
-  <label>
-    color:
-    <input type="text" placeholder="color" formControlName="color" />
-  </label>
+      <input class="form-control" type="text" placeholder="texture" formControlName="texture"/>
+    </div>
 
-  <button (click)="onCancel()">Annuler</button>
-  <button type="submit" [disabled]="!productForm.valid">Valider</button>
+    <div class="col">
+      <label class="form-label">
+        grammage:
+      </label>
+      <input class="form-control" type="number" placeholder="grammage" formControlName="grammage"/>
+    </div>
+
+    <div class="col">
+      <label class="form-label">
+        color:
+      </label>
+      <input class="form-control" type="text" placeholder="color" formControlName="color"/>
+    </div>
+    <hr class="my-2">
+    <!-- @TODO : alligner les boutons correctement -->
+    <div class="col">
+    <div class="row">
+      <div class="col">
+        <button class=" btn btn-primary" type="button" (click)="onCancel()">Annuler</button>
+      </div>
+      <div class="col">
+        <button class=" btn btn-primary" type="submit" [disabled]="!productForm.valid">Valider</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
 </form>

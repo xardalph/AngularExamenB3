@@ -13,7 +13,7 @@ export class ProductComponent {
   constructor(private productsService: ProductsService) {
   }
 
-  public selectedProduct: Product;
+  public selectedProduct = new Product();
 
   routeururl = 'products';
 

@@ -2,30 +2,18 @@
  work on the demo and here https://www.codeply.com but not in my code. maybe a dependency problem ? -->
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #111111;">
-  <a class="navbar-brand " routerLink="/products"> Home</a>
+  <a class="navbar-brand " routerLink="/products/1"> Home</a>
+
+  <div class="navbar-nav mr-auto">
+    <a class="nav-link active" routerLink="/productList">liste produits</a>
+  </div>
+
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
           aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div id="navbarColor01" class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/products"> liste et détail produits</a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/productList">liste produits</a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/productDetail/2"> vers le détail du produit 2</a>
-      </li>
-    </ul>
-
-  </div>
 
 </nav>
 

@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit {
   productListCount: number;
   productList$: Observable<Product[]>;
 
+
   constructor(private productService: ProductsService) {
 
   }
@@ -40,7 +41,10 @@ export class ProductListComponent implements OnInit {
           this.isReady = true;
           this.productListCount = data.length;
           if (data.length){
+
             this.selectProduct(data[0]);
+
+
           }}));
     console.log('apres le suscribe');
     }

@@ -1,7 +1,33 @@
-<p>Présentation du produit</p>
-<ng-container *ngIf="product!=null">
-  <p>Nom : {{product.name}}</p>
-  <p>texture : {{product.texture}}</p>
-  <p>grammage : {{product.grammage}}</p>
-  <p>couleur : {{product.color}}</p>
+<div *ngIf="product!=null" class="w-25 text-center p-3">
+
+  <table class="table-dark table table-hover">
+    <tbody>
+    <tr>
+      <th  scope="row">Nom</th>
+      <td>{{product.name}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Texture</th>
+      <td>{{product.texture}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Grammage</th>
+      <td>{{product.grammage}}</td>
+    </tr>
+    <tr>
+      <th scope="row">couleur</th>
+      <td>{{product.color}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+
+<ng-container *ngIf="product == null">
+  Chargement des données, veuillez patienter
+
 </ng-container>
+

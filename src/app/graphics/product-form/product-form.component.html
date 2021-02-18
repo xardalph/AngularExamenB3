@@ -1,46 +1,36 @@
 <form [formGroup]="productForm" (ngSubmit)="submit()">
   <div class="col-sm-5 ">
-    <div class="col">
-      <label class="form-label">
-        name:
-      </label>
-      <input class="form-control" type="text" placeholder="Product name" formControlName="name"/>
+    <div class="col p-2">
+
+      <input class=" bg-dark text-light border-left-0 border-right-0 border-top-0 form-control" type="text"
+             placeholder="Product name" formControlName="name"/>
       <span *ngIf="shouldShowRequiredError(productForm.controls.name)">Ce champ est requis</span>
 
     </div>
-    <div class="col">
-      <label class="form-label">
-        texture:
-      </label>
-
-      <input class="form-control" type="text" placeholder="texture" formControlName="texture"/>
+    <div class="col p-2">
+      <input class="bg-dark text-light border-left-0 border-right-0 border-top-0 form-control" type="text"
+             placeholder="texture" formControlName="texture"/>
     </div>
 
-    <div class="col">
-      <label class="form-label">
-        grammage:
-      </label>
-      <input class="form-control" type="number" placeholder="grammage" formControlName="grammage"/>
+    <div class="col p-2">
+      <input class="bg-dark text-light border-left-0 border-right-0 border-top-0 form-control" type="number"
+             placeholder="grammage" formControlName="grammage"/>
     </div>
 
-    <div class="col">
-      <label class="form-label">
-        color:
-      </label>
-      <input class="form-control" type="text" placeholder="color" formControlName="color"/>
+    <div class="col p-2">
+      <input class="bg-dark text-light border-left-0 border-right-0 border-top-0 form-control" type="text"
+             placeholder="color" formControlName="color"/>
     </div>
-    <hr class="my-2">
+    <hr class="my-2 ">
     <!-- @TODO : alligner les boutons correctement -->
-    <div class="col">
-      <div class="row">
-        <div class="col">
-          <button class=" float-right btn btn-primary" type="button" (click)="onCancel()">Annuler</button>
-        </div>
-        <div class="col">
-          <button class="  float-left btn btn-primary" type="submit" [disabled]="!productForm.valid">Valider</button>
-        </div>
-      </div>
+    <div>
+      <button class="float-left btn btn-primary" type="button" (click)="onCancel()">Annuler</button>
+
+      <button class="float-right btn btn-primary" type="submit" [disabled]="!productForm.valid">Valider</button>
+
+      <!--  data-placement="right" -->
     </div>
   </div>
+
 
 </form>

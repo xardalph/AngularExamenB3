@@ -60,7 +60,17 @@ export class ProductsService {
   }
 
   get(idproduct: number): Observable<Product> {
-    return this.getAllProduct();
+
+    return this.getAllProduct().pipe(
+      map(xs => {
+        for (const x of xs) {
+          if (x.id == idproduct) {
+            return x;
+          }
+        }
+        return null;
+      }));
+
   }
 
 

@@ -1,4 +1,5 @@
 Liste des produits :
+
 <app-product-list [routeururl]="routeururl" [canChangeSelection]="!isEditing" (selectionChanged)="onSelectionChanged($event)" ></app-product-list>
 
 <div class="w-50 p-3" style="margin-left:25%; margin-right:25%;">
@@ -10,7 +11,7 @@ Liste des produits :
 
 
 
-<app-product-detail [product]="selectedProduct" *ngIf="!isEditing"></app-product-detail>
+<app-product-detail  [product]="selectedProduct" *ngIf="!isEditing"></app-product-detail>
 
 <app-product-form [inputProduct]="selectedProduct" (done)="formDone()" *ngIf="isEditing"></app-product-form>
 </div>

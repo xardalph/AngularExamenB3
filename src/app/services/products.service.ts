@@ -1,79 +1,67 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Product} from '../model/product';
 import {HttpClient} from '@angular/common/http';
+import {map, shareReplay} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private ProductList: Product[] = [
-    {
-      id: 0,
-      name: 'Jim',
-      texture: 'JIIIM',
-      grammage: 85,
-      color: 'vert'
-    }
-    ,
-    {
-      id: 1,
-      name: 'Pete',
-      texture: 'PEEETE',
-      grammage: 92,
-      color: 'vert'
-    }, {
-      id: 2,
-      name: 'Pat',
-      texture: 'PAAAT',
-      grammage: 23,
-      color: 'bleu'
-    }, {
-      id: 3,
-      name: 'Stephan',
-      texture: 'STEPHAAAN',
-      grammage: 56,
-      color: 'gris'
-    },
-    {
-      id: 4,
-      name: 'Rapha',
-      texture: 'fin',
-      grammage: 94,
-      color: 'jaune'
-    }
-  ];
+  private ProductList: Product[];
 
   public selectedProduct: Product;
 
   constructor(private http: HttpClient) {
-    if (this.ProductList && this.ProductList.length){
+    if (this.ProductList && this.ProductList.length) {
       this.selectedProduct = this.ProductList[0];
     }
 
   }
 
-  getAllProduct(): Product[]{
+  private getAllProductAsync$ = this.http.get<Product[]>('assets/ProductList.json').pipe(
+    map((data: Product[]) => {
+      // création d'un autre tableau
+      const result: Product[] = [];
+      data.forEach(element => {
+        result.push(new Product(element));
+      });
+      this.ProductList = result;
+      return result;
 
-    return this.ProductList;
+      // autre méthode (plus élégante mais attention à la confusion avec map (rxjs) et map (sur les tableaux))
+      //  => équivalent du .Select en c# avec Linq => cette fonction map s'applique sur les tableaux
+      // return data.map(e => new Product(e));
+    }),
+    shareReplay(1),
+    map((d) => this.ProductList)
+  );
+
+
+  getAllProduct(): Observable<Product[]> {
+    return this.getAllProductAsync$;
+    // return this.ProductList;
+    // return this.http.get<Product[]>('assets/ProductList.json');
+
   }
 
-  selectProduct(pl: Product): void{
+  selectProduct(pl: Product): void {
     this.selectedProduct = pl;
   }
 
   UpdateProduct(product: Product): void {
-    if (product.id == 0){
+    if (product.id == 0) {
       product.id = Math.max(0, ...this.ProductList.map(pl => pl.id)) + 1;
       this.ProductList.push(product);
-    }else{
+    } else {
       const productIndex = this.ProductList.findIndex(pl => pl.id == product.id);
       this.ProductList[productIndex] = product;
     }
   }
-  get(idproduct: number): Product {
-    return this.ProductList[this.ProductList.findIndex(pl => pl.id == idproduct)];
-  }
 
+  get(idproduct: number): Observable<Product> {
+    return this.getAllProduct();
+  }
 
 
 }

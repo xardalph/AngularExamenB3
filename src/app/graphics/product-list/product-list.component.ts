@@ -1,6 +1,8 @@
 import {Product} from '../../model/product';
 import {ProductsService} from '../../services/products.service';
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 
 @Component({
@@ -18,12 +20,13 @@ export class ProductListComponent implements OnInit {
   @Input() canChangeSelection = true;
 
   @Input() routeururl = 'productDetail';
-
+  isReady = false;
   /**
    * liste des produits
    */
   productList: Product[];
-
+  productListCount: number;
+  productList$: Observable<Product[]>;
 
   constructor(private productService: ProductsService) {
 
@@ -31,13 +34,18 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     // récupération de la liste des produit
-    this.productList = this.productService.getAllProduct();
-    // si il y a plusieurs produits, alors on prend le premier et on le sélectionne
-    if (this.productList && this.productList.some(v => true)) {
-      this.selectPlayer(this.productList[0]);
+    this.productList$ = this.productService.getAllProduct()
+      .pipe(
+        tap((data) => {
+          this.isReady = true;
+          this.productListCount = data.length;
+          if (data.length){
+            this.selectProduct(data[0]);
+          }}));
+    console.log('apres le suscribe');
     }
 
-  }
+
 
   /**
    * permet d'obtenir le joueur sélectionné
@@ -50,7 +58,7 @@ export class ProductListComponent implements OnInit {
    * Permet la selection du joueur
    * @param pl : product à sélectionner
    */
-  public selectPlayer(pl: Product): void {
+  public selectProduct(pl: Product): void {
     if (this.canChangeSelection) {
       this.productService.selectProduct(pl);
       this.selectionChanged.emit(pl);

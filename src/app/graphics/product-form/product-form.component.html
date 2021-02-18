@@ -1,5 +1,5 @@
 <form [formGroup]="productForm" (ngSubmit)="submit()">
-  <div class="col-sm-2 ">
+  <div class="col-sm-5 ">
     <div class="col">
       <label class="form-label">
         name:
@@ -32,14 +32,14 @@
     <hr class="my-2">
     <!-- @TODO : alligner les boutons correctement -->
     <div class="col">
-    <div class="row">
-      <div class="col">
-        <button class=" btn btn-primary" type="button" (click)="onCancel()">Annuler</button>
+      <div class="row">
+        <div class="col">
+          <button class=" float-right btn btn-primary" type="button" (click)="onCancel()">Annuler</button>
+        </div>
+        <div class="col">
+          <button class="  float-left btn btn-primary" type="submit" [disabled]="!productForm.valid">Valider</button>
+        </div>
       </div>
-      <div class="col">
-        <button class=" btn btn-primary" type="submit" [disabled]="!productForm.valid">Valider</button>
-      </div>
-    </div>
     </div>
   </div>
 

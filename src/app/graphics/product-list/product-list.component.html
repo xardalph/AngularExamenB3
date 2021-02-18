@@ -1,13 +1,16 @@
 
 
-<div class=" list-group mt-3 ">
+<div class="list-group mt-3">
 
-  <a class="list-group-item list-group-item-action list-group-item-dark  p-3 w-50 d-flex justify-content-center mx-auto text-light bg-dark toto"
-    *ngFor="let pl of productList"
-     (click)="selectPlayer(pl)"
+  <a class="list-group-item list-group-item-action  list-group-item-dark p-4 w-50 d-flex justify-content-center mx-auto text-light bg-dark toto"
+    *ngFor="let pl of productList$ | async"
+     (click)="selectProduct(pl)"
      [class.active]="isSelected(pl)"
-      routerLink="/{{routeururl}}/{{pl.id}}"> {{pl.name}}</a>
 
-<br/>
+
+      routerLink="/{{routeururl}}/{{pl.id}}"> {{pl.name}}</a>
+  <p *ngIf="!isReady" class="p-4 w-50 d-flex justify-content-center mx-auto text-light bg-dark"> Chargement des données en cours.</p>
+
+
 </div>
 

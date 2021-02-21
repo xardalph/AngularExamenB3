@@ -1,8 +1,7 @@
 
+<div class="list-group mt-3 border">
 
-<div class="list-group mt-3">
-
-  <a class="list-group-item list-group-item-action  list-group-item-dark p-4 w-50 d-flex justify-content-center mx-auto text-light bg-dark toto"
+  <a class="list-group-item list-group-item-action  list-group-item-dark p-4 w-50 d-flex justify-content-center mx-auto text-light bg-dark selected"
     *ngFor="let pl of productList$ | async"
      (click)="selectProduct(pl)"
      [class.active]="isSelected(pl)"

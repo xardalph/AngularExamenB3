@@ -1,7 +1,7 @@
 a.active{
 
 }
-.toto{
+.selected{
   border-width:5px !important;
 }
 .list-group-item.active[aria-expanded="true"]{

@@ -16,9 +16,11 @@ export class ProductDetailUrlComponent implements OnInit {
   constructor(private route: ActivatedRoute, private ProductsService: ProductsService) {}
 
   isReady = false;
+  isEditing = false;
   public id: number;
   public product: Product;
   public product$: Observable<Product>;
+
 
   ngOnInit(): void {
 
@@ -28,14 +30,24 @@ export class ProductDetailUrlComponent implements OnInit {
     this.product$ = this.ProductsService.get(this.id)
       .pipe(
         tap((data) => {
-          console.log('Startting tap.');
           this.isReady = true;
-          console.log('Is Ready changed');
-          this.product = data;
-          console.log('data put in product.');
-
           }));
 
   }
 
+  onUpdate(): void {
+    this.isEditing = true;
+  }
+
+  formDone(): void {
+    this.isEditing = false;
+    // Si nous ne récupérons pas les données depuis le service l'update peux c'être mal passé sans que l'utilisateur
+    // soit au courant, les données étant mise à jour sur son poste en local
+    this.product$ = this.ProductsService.get(this.id)
+      .pipe(
+        tap((data) => {
+          this.isReady = true;
+        }));
+
+  }
 }

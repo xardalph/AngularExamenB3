@@ -1,4 +1,11 @@
-<p>product-list-url works!</p>
-<app-product-list></app-product-list>
 
-<app-product-form></app-product-form>
+<app-product-list [canChangeSelection]="!isEditing"></app-product-list>
+
+<div class="p-3" style="margin-left:25%; margin-right:25%;">
+  <button class=" btn btn-primary ml-auto" *ngIf="!isEditing" (click)="onAdd()">Ajouter</button>
+</div>
+
+<div *ngIf="isEditing" style="margin-left:25%; margin-right:25%;">
+  <app-product-form  (done)="formDone()"  ></app-product-form>
+</div>
+

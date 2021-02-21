@@ -26,6 +26,7 @@ export class ProductsService {
       data.forEach(element => {
         result.push(new Product(element));
       });
+      console.log('data taken from assets inside productService');
       this.ProductList = result;
       return result;
 

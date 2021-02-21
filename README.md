@@ -26,7 +26,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-
-changer les titres de la navbar seul 2 menu attendu -> OK
-ajouter bouton créer produit sur page de liste simple  -> OK
-la page d'affichage permet de modifier le produit (ajouter en plus un bouton d'ajout de produit)

@@ -77,6 +77,9 @@ export class ProductListComponent implements OnInit {
   isSelected(pl: Product): boolean {
     return pl == this.productService.selectedProduct;
   }
+  ChangeSelection(): boolean{
+    return this.canChangeSelection;
+  }
 
 
 }

@@ -40,15 +40,13 @@ export class ProductListComponent implements OnInit {
         tap((data) => {
           this.isReady = true;
           this.productListCount = data.length;
-          if (data.length){
+          if (data.length) {
 
             this.selectProduct(data[0]);
+          }
+        }));
 
-
-          }}));
-    console.log('apres le suscribe');
-    }
-
+  }
 
 
   /**

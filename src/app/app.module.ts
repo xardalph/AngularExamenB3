@@ -11,6 +11,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDetailUrlComponent } from './graphics/product-detail-url/product-detail-url.component';
+import { ProductListUrlComponent } from './graphics/product-list-url/product-list-url.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProductDetailUrlComponent } from './graphics/product-detail-url/product
     ProductDetailComponent,
     ProductListComponent,
     ProductFormComponent,
-    ProductDetailUrlComponent
+    ProductDetailUrlComponent,
+    ProductListUrlComponent
   ],
   imports: [
     BrowserModule,

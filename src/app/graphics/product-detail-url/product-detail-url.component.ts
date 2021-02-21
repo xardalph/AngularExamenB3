@@ -24,7 +24,6 @@ export class ProductDetailUrlComponent implements OnInit {
 
     // tslint:disable-next-line:radix
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-    // this.product = this.ProductsService.get(this.id);
 
     this.product$ = this.ProductsService.get(this.id)
       .pipe(

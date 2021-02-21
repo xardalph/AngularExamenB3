@@ -49,6 +49,11 @@ export class ProductsService {
     this.selectedProduct = pl;
   }
 
+  getSelectedProduct(): Product{
+    return this.selectedProduct;
+
+  }
+
   UpdateProduct(product: Product): void {
     if (product.id == 0) {
       product.id = Math.max(0, ...this.ProductList.map(pl => pl.id)) + 1;
